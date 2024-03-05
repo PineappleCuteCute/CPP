@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 #define MAX_NODES 100000
 
 typedef struct Node {

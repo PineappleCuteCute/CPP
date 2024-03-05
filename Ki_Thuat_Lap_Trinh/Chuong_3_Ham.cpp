@@ -3,7 +3,7 @@
 /*Chương 3: Hàm
 */
 
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 /*1. Truyền tham trị, tham biến và tham số

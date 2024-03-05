@@ -1,48 +1,35 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 
-using namespace std;
+void generate_collections(int n, int M, int current[], int index) {
+    if (index == n) {
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += current[i];
+        }
+        if (sum == M) {
+            for (int i = 0; i < n; i++) {
+                printf("%d", current[i]);
+                if (i < n - 1) {
+                    printf(" ");
+                }
+            }
+            printf("\n\n");  // In hai dòng trống sau mỗi hoán vị
+        }
+        return;
+    }
 
-class HocSinh {
-   private:
-      string ten;
-      int tuoi;
-      float diem;
-
-   public:
-      HocSinh(string ten, int tuoi, float diem) {
-         this->ten = ten;
-         this->tuoi = tuoi;
-         this->diem = diem;
-      }
-
-      void inThongTin() {
-         cout << "Ten: " << ten << endl;
-         cout << "Tuoi: " << tuoi << endl;
-         cout << "Diem: " << diem << endl;
-      }
-
-      float getDiem() {
-         return diem;
-      }
-
-};
+    for (int i = 1; i <= M; i++) {
+        current[index] = i;
+        generate_collections(n, M, current, index + 1);
+    }
+}
 
 int main() {
-   string ten;
-   int tuoi;
-   float diem;
+    int n, M;
+    scanf("%d %d", &n, &M);
 
-   cout << "Nhap ten hoc sinh: ";
-   cin >> ten;
-   cout << "Nhap tuoi hoc sinh: ";
-   cin >> tuoi;
-   cout << "Nhap diem hoc sinh: ";
-   cin >> diem;
+    int current[n];
+    generate_collections(n, M, current, 0);
 
-   HocSinh hs(ten, tuoi, diem);
-
-   hs.inThongTin();
-
-   return 0;
+    return 0;
 }
